@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fantasy Memory Game</title>
+  <link rel="stylesheet" href="memory-game.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- טקסט פתיחה -->
+  <div class="instructions">
+    <p id="text">click the photo to start</p>
+  </div>
+
+          <!--  אנימצית הקרוסלה-->
+  <div class="banner">
+    <div class="slider" style="--quantity: 10">
+      <div class="item" style="--position: 1"><img src="dragon1.jpg" alt="dragon" /></div>  <!-- --position - see end of the code -->
+      <div class="item" style="--position: 2"><img src="lion3.jpg" alt="lion" /></div>
+      <div class="item" style="--position: 3"><img src="dinosaur1.jpg" alt="dinosaur" /></div>
+      <div class="item" style="--position: 4"><img src="snake1.jpg" alt="snake" /></div>
+      <div class="item" style="--position: 5"><img src="dragon1.jpg" alt="dragon" /></div>
+      <div class="item" style="--position: 6"><img src="bear.jpg" alt="bear" /></div>
+      <div class="item" style="--position: 7"><img src="eagle1.jpg" alt="eagle" /></div>
+      <div class="item" style="--position: 8"><img src="elefants.jpg" alt="elefants" /></div>
+      <div class="item" style="--position: 9"><img src="wolf.jpg" alt="wolf" /></div>
+      <div class="item" style="--position: 10"><img src="puma.jpg" alt="puma" /></div>
+    </div>
+  </div>
+
+  <!-- כפתורי בחירת חיה - נסתרים בהתחלה -->
+  <div class="buttons" style="display: none;">
+    <button class="btnDinosaur">dinosaur</button>
+    <button class="btnLion">big cat</button>
+    <button class="btnSnake">snake</button>
+    <button class="btnDragon">dragon</button>
+  </div>
+
+  <!-- לוח המשחק -->
+  <div id="game-board"></div>
+
+  
+  <script src="memory-game.js" defer></script>
+</body>
+</html>
+ <!-- 
+ניתן לכתוב את "פוזישן" גגאווה סקריפט במקום להוסיף את זה כאן אבל מבחינתי האתגר היה לכתוב הכל ללא הגאווה סקריפט
+js code:
+
+const items = document.querySelectorAll('.item');   - לוקח את כל האלמנטים עם הקלאס "item"
+  items.forEach((item, index) => {        - עובר על כל אלמנט ומקבל את האינדקס שלו
+    const position = index + 1;           - מוסיפים את האחד מאחר וגאווה סקריפט מתחילה באפס וה"דיו" שלנו מתחיל באחד
+    item.style.setProperty('--position', position);   - מגדיר את הפוזישן של כל אלמנט לפי האינדקס שלו
+  });
+
+*** setProperty      - מתודה מעניינת שמאפשרת לנו להגדיר או לשנות את הערך של משתנה בסי אס אס 
+   **element.style.setProperty('--name', value);
+        --name  - the name of the CSS variable (most start with --)
+        value - is a string and can be a number, color, etc...
+              :דוגמא של קוד
+        const box = document.querySelector('.box');
+        box.style.setProperty('--color', 'tomato');
+
+ -->

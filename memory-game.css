@@ -1,0 +1,223 @@
+       /* google font */
+
+          /* .dancing-script-<uniquifier> {
+             font-family: "Dancing Script", cursive;
+              font-optical-sizing: auto;
+               font-weight: <weight>;
+                font-style: normal;
+        } */
+
+
+.banner{
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+
+}
+.banner .slider {
+    position:absolute;
+    width: 200px;
+    height: 210px;
+    top: 10%;
+    left: calc(50% - 100px);
+   transform-style: preserve-3d;   /*  תשמור על המימד השלישי (Z-axis), אל תשטח אותו. */
+    transform: perspective(1000px);
+    animation: autoRun 20s linear infinite;
+}
+
+@keyframes autoRun{
+    from{
+         transform: perspective(1000px) rotateX(-6deg) rotateY(0deg);
+     }
+     to {
+         transform: perspective(1100px) rotateX(-6deg) rotateY(360deg);
+     }
+ }
+
+.banner .slider .item {
+    position: absolute;
+    inset: 0 0 0 0;
+    transform: 
+        rotateY(calc( (var(--position) - 1) * (360/var(--quantity)) * 1deg))
+        translateZ(500px);/* מגדיר את המרחק של הפריט מהמרכז של הקרוסלה */
+                                   /*--position (variable) */ /* המיקום של האלמנט הנוכחי (1, 2, 3 וכו').*/
+                                  /*--quantity (variable) */ /*כמה אלמנטים יש בקרוסלה - במקרה שלנו 10*/
+                                 /*var(--position) - 1 */ /*מתחילים את הספירה מאפס מעלות */
+                                /* 360/var(--quantity)*/ /*חישוב של כמה מעלות במקרה הזה 360 לחלק ל10 */
+                               /*  1deg *//*מגדיר את היחידות במעלות */
+                              /* translateZ *//*ציר ה"זד" יהיה תמיד 500 פקסלים מהמרכז */
+                             /* :ככה נראה החישוב*/
+                            /*((3 - 1) * (360 / 10)) * 1deg = (2 * 36) * 1deg = 72deg */
+    opacity: 0.7 /* שקיפות */
+    transition all 0.5s ease-in-out;    /* לגרום לאנימציה לעבוד חלק*/
+}
+
+.banner .slider .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+}
+ /* אנימציה של הכיתוב בקרוסלה */
+@keyframes slide {                      /* ההגדרה של תנועה על ציר איקס משמאל עד לנקודת האפס*/ 
+    from {
+        transform: translateX(-1200px);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+ .instructions {
+    position: absolute;
+    display: flex;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);    
+}
+
+
+#text{
+    animation-name: slide;                         /* שם האנימציה  */
+    animation-duration: 15s;                      /* מגדיר את משך הזמן שיקח לאנימציה לסיים מחזור אחד */
+    animation-timing-function: ease-linear;      /* מגדיר את התנועה של האנימציה כלינארית - במקרה הזה  */
+    animation-delay: 1ms;                       /*  זמן ההשהיה לפני תחילת האנימציה */
+    animation-iteration-count: 1;              /* מגדיר את ספר הפעמים שהאנימציה תחזור על עצמה  */
+    animation-direction: normal;              /*  מגדיר את כיוון התנוע קדימה בלבד */
+    animation-fill-mode: forwards;           /*   */
+    color: aqua;/* צבע הכיתוב  */
+    
+}
+     /* הגדרה כללית של כפתורי הפתיחה */
+.buttons {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 30px;
+   
+    /* הגדרת עיצוב ותמונה של כל כפתור פתיחה */
+}
+.btnDinosaur {
+    background-image: url('dinosaur2.jpg');
+    image-resolution: from-image;
+    background-size: cover;
+    padding: 90px 90px;
+    border: 3px solid #e02222;
+    border-radius: 150px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #e9f148;
+    box-shadow:3px 3px 6px rgba(0, 0, 0, 0.5); 
+}
+.btnLion {
+    background-image: url('lion2.jpg');
+    image-resolution: from-image;
+    background-size: cover;
+    padding: 90px 90px;
+    border: 3px solid #e02222;
+    border-radius: 150px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #e9f148;
+    box-shadow:3px 3px 6px rgba(0, 0, 0, 0.5); 
+}
+.btnSnake {
+    background-image: url('snake2.jpg');
+    image-resolution: from-image;
+    background-size: cover;
+    padding: 90px 90px;
+    border: 3px solid #e02222;
+    border-radius: 150px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #e9f148;
+    box-shadow:3px 3px 6px rgba(0, 0, 0, 0.5); 
+}
+.btnDragon {
+    background-image: url('dragon2.jpg');
+    image-resolution: from-image;
+    background-size: cover;
+    padding: 90px 90px;
+    border: 3px solid #e02222;
+    border-radius: 150px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #e9f148;
+    box-shadow:3px 3px 6px rgba(0, 0, 0, 0.5); 
+}
+     /* עיצוב לוח המשחק  */
+  body {
+    font-family: 'Dancing Script', cursive;
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  
+  /* h1 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 2.5rem;
+    color: #e02222;
+  } */
+  
+  .memory-game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+           /* הגדרת לוח המשחק */
+  #game-board {
+    width: auto;
+    max-width: 640px;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    perspective: 1000px;
+     
+  }
+  
+           /* הגדרת הקלפים */
+  .memory-card {
+    width: 120px;
+  height: 120px;
+    margin: 5px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    cursor: pointer;
+  }
+
+   /* היפוך הקלף */
+  .memory-card.flip {
+    transform: rotateY(180deg);
+  }
+  
+  .front-face,
+  .back-face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 5px;
+    backface-visibility: hidden;
+    object-fit: cover;
+  }
+  
+  .front-face {
+    transform: rotateY(180deg);
+  }
+
+   /* התאמת שני קלפים */
+  .matched {
+    opacity: 0.2;
+    filter: grayscale(100%);
+    transform: scale(0.95);
+    transition: all 0.4s ease-in-out;
+    pointer-events: none;
+  }
+  
