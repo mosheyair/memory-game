@@ -220,4 +220,59 @@
     transition: all 0.4s ease-in-out;
     pointer-events: none;
   }
+  @media screen and (max-width: 600px) {
+  .banner .slider {
+    width: 130px;
+    height: 140px;
+    top: 6%;
+    left: calc(50% - 65px);
+    transform: perspective(600px);
+  }
+
+  .banner .slider .item {
+    transform:
+      rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+      translateZ(250px); /* מקרב את הפריטים למרכז */
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 20px;
+    bottom: 20px;
+  }
+
+  .buttons button {
+    padding: 60px 60px;
+    font-size: 1.2rem;
+    border-radius: 100px;
+  }
+
+  .instructions {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  #game-board {
+    max-width: 95vw;
+    gap: 5px;
+  }
+
+  .memory-card {
+    width: 80px;
+    height: 80px;
+  }
+}
+#timer {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  z-index: 999;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
   

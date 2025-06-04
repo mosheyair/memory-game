@@ -101,6 +101,12 @@ const API_KEY = "50468830-6e430c89ef17bf5c7028c8448";
         .catch(err => console.error("Failed to fetch images:", err));// טיפול בשגיאות
 }
 
+      // משתנים להצגת טיימר המשחק
+     let timerInterval;
+     let secondsPassed = 0;
+
+
+// פונקציה להפעלת משחק הזיכרון
 function activateMemoryGame() {
   const cards = document.querySelectorAll(".memory-card");// שליפת כל הכרטיסים מהלוח
 // הגדרת משתנים לניהול מצב המשחק
@@ -159,12 +165,24 @@ function activateMemoryGame() {
   cards.forEach(card => {
     card.style.order = Math.floor(Math.random() * 12);// הגדרת סדר אקראי לכרטיסים
   });
+                    // התחלת טיימר
+               document.getElementById("timer").style.display = "block";
+                 secondsPassed = 0;
+                   document.getElementById("timer").textContent = `⏱ Time: 0s`;
+
+               clearInterval(timerInterval);
+                 timerInterval = setInterval(() => {
+                   secondsPassed++;
+                     document.getElementById("timer").textContent = `⏱ Time: ${secondsPassed}s`;
+                }, 1000);
+
 }
 
 // אנימציה לסיום המשחק
 function endGameAnimation(callback) {
   const message = document.createElement("div");
-  message.innerText = "🎉 You won! Ready for a new challenge?";
+
+ 
   message.style.position = "fixed";
   message.style.top = "30%";
   message.style.left = "50%";
@@ -180,6 +198,38 @@ function endGameAnimation(callback) {
   document.body.appendChild(message);
     const win = new Audio("sounds/win.mp3"); // הגדרת צליל הניצחון
     win.play(); // הפעלת הצליל מיד כשההודעה מופיעה
+
+        // הצגת זמן סיום
+               const finalTimeDisplay = document.getElementById("final-time");
+                finalTimeDisplay.textContent = `⏱ bravo your time ${secondsPassed} seconds!`;
+                 finalTimeDisplay.style.display = "block";
+                  finalTimeDisplay.style.fontSize = "2rem";
+                   finalTimeDisplay.style.color = "#f8e71c";
+                    finalTimeDisplay.style.fontFamily = "Poetsen One, sans-serif";
+                     finalTimeDisplay.style.textShadow = "2px 2px 4px #000";
+                      finalTimeDisplay.style.marginTop = "20px";
+          //  message.innerHTML = `
+           //  🎉 you win<br>
+            //   ⏱ your time <strong>${secondsPassed} seconds!</strong><br><br>
+            //      <button id="btn-register" style="margin: 10px; padding: 10px 20px; font-size: 1rem;">Subscribe to the //leaderboard</button>
+           //         <button id="btn-skip" style="margin: 10px; padding: 10px 20px; font-size: 1rem;">Maybe another time</button>
+        //    `;
+
+                     
+     setTimeout(() => {
+       document.getElementById("btn-register").addEventListener("click", () => {
+         message.remove();
+           askForName(); // ניצור את הפונקציה הזו בהמשך
+        });
+
+                document.getElementById("btn-skip").addEventListener("click", () => {
+                  message.remove();
+                   if (callback) callback();
+                 });
+              }, 100); // השהייה קצרה כדי לוודא שהכפתורים נטענו
+
+
+
   setTimeout(() => {
     message.remove();
     if (callback) callback();
@@ -220,6 +270,8 @@ function simulateEndGame() {
       document.querySelector(".buttons").style.display = "flex";
     });
   });
+  clearInterval(timerInterval);// איפוס זמן המשחק
+  
 }
 
 // כפתורי בחירה
@@ -236,5 +288,13 @@ document.querySelector(".btnDinosaur").addEventListener("click", () => {
   fetchAnimalImages("dinosaur");
 });
 
+//הפעלה מיותרת של בחירה אוטומטית של המשחק
+//  document.querySelector(".btnRandom").addEventListener("click", () => {
+//   const animals = ["lion", "dinosaur", "dragon", "snake"];
+//   const randomAnimal = animals[Math.floor(Math.random() * animals.length)];
+//   fetchAnimalImages(randomAnimal);
+// });
+
 // כפתור לבדיקה ידנית
  //document.getElementById("test-end-game").addEventListener("click", simulateEndGame);
+ 
