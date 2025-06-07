@@ -158,12 +158,6 @@
     color: #333;
   }
   
-  /* h1 {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 2.5rem;
-    color: #e02222;
-  } */
   
   .memory-game {
     display: flex;
@@ -274,5 +268,91 @@
   z-index: 999;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
+
+#name {
+  position: fixed;
+  top: 85%;
+  left: 28%;
+  font-size: 2.2rem;
+  color: #281dc8;
+  z-index: 999;
+ 
+}
+
+#sendName {
+  position: fixed;
+  top: 85%;
+  left: 74%;
+  background-color: rgba(219, 30, 30, 0.85);
+  padding: 16px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  z-index: 999;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+#yourtName {
+  position: fixed;
+  top: 90%;
+  left: 57%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(214, 98, 98, 0.85);
+  padding: 16px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  z-index: 999;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.choosNext {
+  position: fixed;
+  top: 73%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 16px;
+  font-size: 2rem;
+  z-index: 999;
+  
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 5px;
+display: none; /* Hide the table by default */
+}
+
+/* Header row style */
+thead {
+  background-color: #4a90e2;
+  color: white;
+}
+
+/* Row styles */
+tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #e0e0e0;
+}
+tbody tr:nth-child(1) {
+    background-color: #d22323;
+  }
+  tbody tr:nth-child(2) {
+    background-color: #df3d3d;
+  }
+  tbody tr:nth-child(3) {
+    background-color: #ea6464;
+  }
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
 
   
